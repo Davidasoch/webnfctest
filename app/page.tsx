@@ -1,5 +1,4 @@
-'use client'
-import { Counter } from "@/hooks/count";
+import { Read } from "@/hooks/read";
 
 
 export default function page() {
@@ -7,7 +6,7 @@ export default function page() {
   
   return (
     <div>
-      <Counter/>
+      <Read/>
     </div>
 
   );
