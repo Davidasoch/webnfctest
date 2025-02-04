@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react'
 
 export function Read(){
-    const [value, setvalue] = useState(0)
+    const [value, setvalue] = useState([])
 
 async function Checking(){
     
@@ -25,7 +25,7 @@ async function Checking(){
 
     return(
         <div>
-        <p>{value}</p>
+        <p>{value.map(records => <div>{records.data}</div>)}</p>
         <button onClick={() => Checking()}>scan</button>
     </div>
       )
