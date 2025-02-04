@@ -1,16 +1,13 @@
-import {read} from "./lib/read"
+'use client'
+import { Counter } from "@/hooks/count";
 
 
 export default function page() {
-
-  read().then(({ serialNumber } : any) => {
-    console.log(serialNumber);
-  });
   
-
+  
   return (
     <div>
-      hello
+      <Counter/>
     </div>
 
   );
