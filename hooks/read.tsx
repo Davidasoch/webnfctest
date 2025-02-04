@@ -23,7 +23,7 @@ async function Checking(){
             switch (record.recordType) {
               case "text":
                 const textDecoder = new TextDecoder(record.encoding);
-                setvalue({textDecoder.decode(record.data)})
+                setvalue(`${textDecoder.decode(record.data)}`)
                 console.log(`Text: ${textDecoder.decode(record.data)} (${record.lang})`);
                 break;
               case "url":
@@ -37,8 +37,6 @@ async function Checking(){
           }
 
         });
-
-
 
       } catch (error) {
         console.log("Argh! " + error);
