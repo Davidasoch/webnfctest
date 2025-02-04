@@ -5,6 +5,7 @@ export function Read(){
     const [value, setvalue] = useState(0)
 
 async function Checking(){
+    
     try{
         const ndef = new NDEFReader();
         await ndef.scan();
@@ -13,7 +14,7 @@ async function Checking(){
         });
     
         ndef.addEventListener("reading", ({ message, serialNumber }) => {
-            setvalue(message.records[1])
+            setvalue(message.records)
           console.log(`> Serial Number: ${serialNumber}`);
           console.log(`> Records: (${message.records.length})`);
         });
