@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react'
 
 export function Read(){
-    const [value, setvalue] = useState<string>()
+    const [value, setvalue] = useState([]) 
 
 async function Checking(){
     
@@ -14,7 +14,7 @@ async function Checking(){
         });
     
         ndef.addEventListener("reading", ({ message, serialNumber }) => {
-            setvalue(message.records[0].data)
+            setvalue(message.records)
           console.log(`> Serial Number: ${serialNumber}`);
           console.log(`> Records: (${message.records.length})`);
         });
@@ -24,7 +24,15 @@ async function Checking(){
 }
 
     return(
+
+
         <div>
+        <ul>
+        {value.map((record) => (
+          <li key={record.id}>{record.data}</li>
+        ))}
+      </ul>
+
         <p>{value}</p>
         <button onClick={() => Checking()}>scan</button>
     </div>
