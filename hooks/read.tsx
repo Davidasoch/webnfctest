@@ -13,7 +13,7 @@ async function Checking(){
         });
     
         ndef.addEventListener("reading", ({ message, serialNumber }) => {
-            setvalue(serialNumber)
+            setvalue(message.records[1])
           console.log(`> Serial Number: ${serialNumber}`);
           console.log(`> Records: (${message.records.length})`);
         });
