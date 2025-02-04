@@ -14,7 +14,7 @@ async function Checking(){
         });
     
         ndef.addEventListener("reading", ({ message, serialNumber }) => {
-            setvalue(message.records)
+            setvalue(message.records[0])
           console.log(`> Serial Number: ${serialNumber}`);
           console.log(`> Records: (${message.records.length})`);
         });
@@ -25,7 +25,7 @@ async function Checking(){
 
     return(
         <div>
-        <p>{value.map(records => <div>{records.data}</div>)}</p>
+        <p>{value.data}</p>
         <button onClick={() => Checking()}>scan</button>
     </div>
       )
