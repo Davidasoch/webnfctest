@@ -24,7 +24,7 @@ const Scan = () => {
                     console.log("NDEF message read.");
                     onReading(event);
                     setActions({
-                        scan: 'scanned',
+                        scan: 'scanning',
                         write: null
                     });
                 };

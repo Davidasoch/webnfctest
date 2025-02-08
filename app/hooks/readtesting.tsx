@@ -3,9 +3,9 @@ import { useState, useEffect, useContext, useCallback } from 'react'
 import { scanContext } from '@/app/utils/context';
 import { contextHandler } from "@/app/utils/actionshandler";
 import Scanner  from "@/app/components/scanbox"
+import Notification from '@/app/components/notification'
 
 const  Read = () =>{
-    const [messageText, setvalue] = useState<string>() 
     const [message, setMessage] = useState('');
     const [actions, setActions] = useState(useContext(scanContext))
     const [serialNumber, setSerialNumber] = useState('');
@@ -63,10 +63,10 @@ const  Read = () =>{
       <>
       {actions === 'scanned' ?  
       <div>
-          <p>Serial Number: {serialNumber}</p>
-          <p>Message: {message}</p>
+<Notification message={message}/> 
       </div>
-      : <Scanner></Scanner> }
+      :<Scanner></Scanner>}
+      
   </>
 
 

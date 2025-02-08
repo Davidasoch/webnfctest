@@ -6,6 +6,7 @@ import { useState, useContext } from 'react'
 import { ScanContext } from '@/app/context/scan'
 import { ActionsContext } from '@/app/context/scantest';
 import  Scan from '@/app/hooks/reader'
+import Notification from '@/app/components/notification'
 //import Scanner  from '@/app/components/scanbox'
 
 
