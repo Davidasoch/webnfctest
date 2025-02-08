@@ -2,6 +2,7 @@ import React, { useCallback, useContext, useEffect, useState } from 'react';
 import Scanner  from '@/app/components/scanbox'
 //import { ScanContext } from '@/app/context/scan'
 import { ActionsContext } from '@/app/context/scantest';
+import Notification from '@/app/components/notification'
 
 const Scan = () => {
     const [message, setMessage] = useState('');
@@ -63,7 +64,7 @@ const Scan = () => {
                 <p>Serial Number: {serialNumber}</p>
                 <p>Message: {message}</p>
             </div>
-            : <Scanner status={actions.scan}></Scanner> }
+            : <div><Scanner status={actions.scan}></Scanner> <Notification message={message}/></div>}
         </>
     );
 };
