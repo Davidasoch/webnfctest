@@ -1,14 +1,22 @@
 'use client'
 import { useState, useEffect } from 'react'
+import Scanner  from '@/app/components/scanbox'
+import React, { useContext } from 'react'
+import { ScanContext } from '@/app/context/scan'
 
 export function Read(){
     const [value, setvalue] = useState<string>() 
+    const [scanStatus, setScanStatus] = useState(false);
+    setScanStatus(useContext(ScanContext))
+
+    console.log(scanStatus)
 
 async function Checking(){
-    
+
     try{
         const ndef = new NDEFReader();
         await ndef.scan();
+
         ndef.addEventListener("readingerror", () => {
           console.log("Argh! Cannot read data from the NFC tag. Try another one?");
         });
@@ -43,9 +51,17 @@ async function Checking(){
 }
 
     return(
-    <div>
+      <>
+
+      {scanStatus===true ?
+        <div>
         <p>{value}</p>
-        <button onClick={() => Checking()}>scan</button>
-    </div>
+        <button onClick={() => Checking()} className="btn">scan</button>
+        </div>
+        :<ScanContext.Provider value={scanStatus}>
+        {scanStatus && <Scanner/>}
+      </ScanContext.Provider>}
+
+    </>
       )
 }
