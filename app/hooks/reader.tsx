@@ -25,7 +25,7 @@ const Scan = () => {
                     console.log("NDEF message read.");
                     onReading(event);
                     setActions({
-                        scan: 'scanning',
+                        scan: 'scanned',
                         write: null
                     });
                 };
@@ -61,10 +61,12 @@ const Scan = () => {
         <>
             {actions.scan === 'scanned' ?  
             <div>
-                <p>Serial Number: {serialNumber}</p>
-                <p>Message: {message}</p>
+                <Notification message={message}/>
+                <Scanner status={actions.scan}></Scanner>
+
+
             </div>
-            : <div><Scanner status={actions.scan}></Scanner> <Notification message={message}/></div>}
+            : <Scanner status={actions.scan}></Scanner>}
         </>
     );
 };

@@ -63,9 +63,9 @@ const  Read = () =>{
       <>
       {actions === 'scanned' ?  
       <div>
-<Notification message={message}/> 
+
       </div>
-      :<Scanner></Scanner>}
+      :<Notification message={'fdgdfgdfgd'}/> }
       
   </>
 
