@@ -11,8 +11,8 @@ const Scan = () => {
     let input = actions.scan
 
     const scan = useCallback(async() => {
-        if ('NDEFReader' in window && actions.scan!='disabled') { 
-
+        if ('NDEFReader' in window ) {  
+            if(actions.scan!='disabled'){
                 try {
                     const ndef = new window.NDEFReader();
                     await ndef.scan();
@@ -34,6 +34,11 @@ const Scan = () => {
                 } catch(error){
                     console.log(`Error! Scan failed to start: ${error}.`);
                 };
+            }else{
+                setActions({scan: 'disabled',
+                    write: null})
+            }
+
 
 
             
