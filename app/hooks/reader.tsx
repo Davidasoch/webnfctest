@@ -9,7 +9,15 @@ const Scan = () => {
     const [serialNumber, setSerialNumber] = useState('');
     const { actions, setActions} = useContext(ActionsContext);
 
+
     const scan = useCallback(async() => {
+
+if(actions.scan != 'disabled'){
+    console.log("scanning is active")
+}else{
+    console.log("scanning is disabled")
+}
+
 
         if ('NDEFReader' in window && actions.scan != 'disabled') { 
             try {
@@ -68,6 +76,8 @@ const Scan = () => {
           <Scanner status={actions.scan}></Scanner>
       </div>
           case "scanning": return <Scanner status={actions.scan}></Scanner>
+
+          case "disabled": return <></>
 
           default:      return null;
         }
