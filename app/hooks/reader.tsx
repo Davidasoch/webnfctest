@@ -11,7 +11,7 @@ const Scan = () => {
 
     const scan = useCallback(async() => {
 
-        if ('NDEFReader' in window) { 
+        if ('NDEFReader' in window && actions.scan != 'disabled') { 
             try {
                 const ndef = new window.NDEFReader();
                 await ndef.scan();
@@ -56,17 +56,26 @@ const Scan = () => {
     useEffect(() => {
         scan();
     }, [scan]);
+    
+    console.log(actions.scan)
 
     return(
         <>
-            {actions.scan === 'scanned' ?  
-            <div>
-                <Notification message={message}/>
-                <Scanner status={actions.scan}></Scanner>
+{(() => {
+        switch (actions.scan) {
+          case "scanned":   return <div>
+          <Notification message={message}/>
+          <Scanner status={actions.scan}></Scanner>
+      </div>
+          case "scanning": return <Scanner status={actions.scan}></Scanner>
+
+          default:      return null;
+        }
+      })()}
 
 
-            </div>
-            : <Scanner status={actions.scan}></Scanner>}
+
+ 
         </>
     );
 };
