@@ -1,11 +1,11 @@
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import  '@/app/styles/notifications.css';
 
 const Notification = (message) => {
 
  const [display, setDisplay] = useState(true);
 
-setDisplay(true)
+ useEffect(() => {setDisplay(true)});
 
  setTimeout(() => {
     setDisplay(false);
