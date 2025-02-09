@@ -13,7 +13,7 @@ const  Read = () =>{
 
         const scan = useCallback(async() => {
 
-        if ('NDEFReader' in window) { 
+        if ('NDEFReader' in window && action.scan!='disabled') { 
             try {
                 const ndef = new window.NDEFReader();
                 await ndef.scan();
