@@ -26,8 +26,6 @@ const onHandleAction = (actions) =>{
   setActions({...actions});
 }
 
-console.log(actions)
-
 return (
     <div className="App">
       <img className="App-logo" alt="logo" />

@@ -12,16 +12,8 @@ const Scan = () => {
 
     const scan = useCallback(async() => {
 
-if(actions.scan != 'disabled'){
-    console.log("scanning is active")
-}else{
-    console.log("scanning is disabled")
-}
-
-
         if ('NDEFReader' in window) { 
-            if(actions.scan!='disabled'){
-
+            console.log(actions.scan)
                 try {
                     const ndef = new window.NDEFReader();
                     await ndef.scan();
@@ -45,7 +37,7 @@ if(actions.scan != 'disabled'){
                 };
 
 
-            }
+            
 
         }
     },[setActions]);
