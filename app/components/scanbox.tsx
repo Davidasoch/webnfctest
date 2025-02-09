@@ -15,7 +15,7 @@ const Scanner = () => {
 
       
       <div className="scanner">
-        <p className="scanner-exit" onClick={()=>setActions({...actions, scan: 'disabled'})}>X</p>
+        <p className="scanner-exit" onClick={()=>setActions({...actions, scan: null})}>X</p>
         <div className="scanner-container">
           <img  alt="spinning log" className="scanner-image"/>
           <p className="scanner-text">
