@@ -19,7 +19,7 @@ if(actions.scan != 'disabled'){
 }
 
 
-        if ('NDEFReader' in window && actions.scan != 'disabled') { 
+        if ('NDEFReader' in window) { 
             try {
                 const ndef = new window.NDEFReader();
                 await ndef.scan();
@@ -61,9 +61,14 @@ if(actions.scan != 'disabled'){
         }
     };
 
-    useEffect(() => {
-        scan();
-    }, [scan]);
+    //if(actions.scan != 'disabled'){
+        useEffect(() => {
+            scan();
+        }, [scan]);
+   // }else{
+       // return <></>;
+   // }
+
     
     console.log(actions.scan)
 
@@ -78,7 +83,7 @@ if(actions.scan != 'disabled'){
       </div>
           case "scanning": return <div> <Scanner status={actions.scan}></Scanner>   <p>{actions.scan}</p></div>
 
-          case "disabled": return <></>
+          case "disabled": return <><p>disabled</p></>
 
           default:      return null;
         }
