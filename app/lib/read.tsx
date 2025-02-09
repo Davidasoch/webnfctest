@@ -1,5 +1,3 @@
-
-
 export  function read() {
   
     const ndef = new NDEFReader();

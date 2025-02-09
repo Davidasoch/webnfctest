@@ -59,18 +59,21 @@ const  Read = () =>{
 
 
 
-    return(
-      <>
-      {actions === 'scanned' ?  
-      <div>
+  {(() => {
+    switch (actions.scan) {
+      case 'scanned':
+        return <Start handleClick={handleClick} />
+      case 'scanning':
+        return <Playing handleClick={handleClick} />
+      case 'disabled':
+        return <Won handleClick={handleClick} />
+      case 'lost':
+        return <Lost handleClick={handleClick} />
+      default:
+        return null
+    }
+  })()}
 
-      </div>
-      :<Notification message={'fdgdfgdfgd'}/> }
-      
-  </>
-
-
-      )
 }
 
 export default Read
