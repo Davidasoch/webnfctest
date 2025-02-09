@@ -20,27 +20,33 @@ if(actions.scan != 'disabled'){
 
 
         if ('NDEFReader' in window) { 
-            try {
-                const ndef = new window.NDEFReader();
-                await ndef.scan();
-                
-                console.log("Scan started successfully.");
-                ndef.onreadingerror = () => {
-                    console.log("Cannot read data from the NFC tag. Try another one?");
-                };
-                
-                ndef.onreading = event => {
-                    console.log("NDEF message read.");
-                    onReading(event);
-                    setActions({
-                        scan: 'scanned',
-                        write: null
-                    });
+            if(actions.scan!='disabled'){
+
+                try {
+                    const ndef = new window.NDEFReader();
+                    await ndef.scan();
+                    
+                    console.log("Scan started successfully.");
+                    ndef.onreadingerror = () => {
+                        console.log("Cannot read data from the NFC tag. Try another one?");
+                    };
+                    
+                    ndef.onreading = event => {
+                        console.log("NDEF message read.");
+                        onReading(event);
+                        setActions({
+                            scan: 'scanned',
+                            write: null
+                        });
+                    };
+    
+                } catch(error){
+                    console.log(`Error! Scan failed to start: ${error}.`);
                 };
 
-            } catch(error){
-                console.log(`Error! Scan failed to start: ${error}.`);
-            };
+
+            }
+
         }
     },[setActions]);
 
