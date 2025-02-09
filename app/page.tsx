@@ -13,17 +13,11 @@ import Notification from '@/app/components/notification'
 
 export default function page() {
 
-  const [scanState, setScanState] = useState(false);
- // const [scanS, setSc] = useState(false);
-
-function toggleScanState()  {
- setScanState(!scanState)
-}
-
 let scanStatus = useContext(ScanContext);
 
 
-const [actions, setActions] = useState(null);
+const [actions, setActions] = useState('disabled');
+
 const {scan, write} = actions || {};
 
 const actionsValue = {actions,setActions};
@@ -44,5 +38,4 @@ return (
       </ActionsContext.Provider>
     </div>
 );
-
 }
