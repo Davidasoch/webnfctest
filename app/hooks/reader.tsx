@@ -74,8 +74,9 @@ if(actions.scan != 'disabled'){
           case "scanned":   return <div>
           <Notification message={message}/>
           <Scanner status={actions.scan}></Scanner>
+          <p>{actions.scan}</p>
       </div>
-          case "scanning": return <Scanner status={actions.scan}></Scanner>
+          case "scanning": return <div> <Scanner status={actions.scan}></Scanner>   <p>{actions.scan}</p></div>
 
           case "disabled": return <></>
 
