@@ -16,7 +16,7 @@ export default function page() {
 let scanStatus = useContext(ScanContext);
 
 
-const [actions, setActions] = useState('disabled');
+const [actions, setActions] = useState(null);
 
 const {scan, write} = actions || {};
 
@@ -26,6 +26,8 @@ const onHandleAction = (actions) =>{
   setActions({...actions});
 }
 
+console.log(actions)
+
 return (
     <div className="App">
       <img className="App-logo" alt="logo" />
@@ -34,7 +36,7 @@ return (
         <button onClick={()=>onHandleAction({scan: 'scanning', write: null})} className="btn">Scan</button>
       </div>
       <ActionsContext.Provider value={actionsValue}>
-        {scan && <Scan/>}
+        { scan && <Scan/>}
       </ActionsContext.Provider>
     </div>
 );
