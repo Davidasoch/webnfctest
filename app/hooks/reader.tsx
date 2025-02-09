@@ -12,7 +12,7 @@ const Scan = () => {
 
     const scan = useCallback(async() => {
 
-        if ('NDEFReader' in window) { 
+        if ('NDEFReader' in window && actions.scan==='scanned') { 
             console.log(actions.scan)
                 try {
                     const ndef = new window.NDEFReader();
