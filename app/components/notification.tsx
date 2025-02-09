@@ -5,6 +5,8 @@ const Notification = (message) => {
 
  const [display, setDisplay] = useState(true);
 
+setDisplay(true)
+
  setTimeout(() => {
     setDisplay(false);
  }, 2000);
